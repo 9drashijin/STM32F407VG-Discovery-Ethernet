@@ -211,7 +211,7 @@ void blink_LED3()
 		{
 			case LED_INITIAL:   if(delay(FAST_BLINKS,previousTime))
 								{
-									turnOnLED4();
+									turnOffLED4();
 									state = LED_ON_STATE;
 									previousTime = currentTime;
 								}
@@ -219,7 +219,7 @@ void blink_LED3()
 
 			case LED_ON_STATE:  if(delay(FAST_BLINKS,previousTime))
 								{
-									turnOnLED4();
+									turnOffLED4();
 									count--;
 									state = LED_OFF_STATE;
 									previousTime = currentTime;
@@ -233,7 +233,7 @@ void blink_LED3()
 
 			case LED_OFF_STATE: if(delay(FAST_BLINKS,previousTime))
 								{
-									turnOffLED4();
+									turnOnLED4();
 									state = LED_INITIAL;
 									previousTime = currentTime;
 								}
@@ -241,34 +241,32 @@ void blink_LED3()
 		}
 }
 
-void blink_LED1_yield()
+void blink_LED1_yield(TaskBlock *tb)
 {
-	static uint32_t state = 0;
 	static uint32_t previousTime = 0;
 
-	startTaskLED()
+	startTaskLED(tb)
 
 	turnOnLED1();turnOnLED3();
 	if(delay(10, previousTime))
 	{
 	previousTime = currentTime;
-	yieldLED()
+	yieldLED(tb)
 	turnOnLED1();turnOnLED3();
 	if(delay(10, previousTime))
 	{
 	previousTime = currentTime;
-	yieldLED()
+	yieldLED(tb)
 	turnOffLED1();turnOffLED3();
 	if(delay(10, previousTime))
 	{
 	previousTime = currentTime;
 
-	endTaskLED()
+	endTaskLED(tb)
 }
 
-void blink_LED2_yield()
+void blink_LED2_yield(TaskBlock *tb)
 {
-	static uint32_t state = 0;
 	static uint32_t previousTime = 0;
 	if(switchControl() == GPIO_PIN_SET)
 	{
@@ -279,91 +277,104 @@ void blink_LED2_yield()
 		FAST_BLINK = 20;
 	}
 
-	startTaskLED()
+	startTaskLED(tb)
 
 	if(delay(FAST_BLINK,previousTime))
 	{
 		turnOnLED2();
 		previousTime = currentTime;
 
-	yieldLED()
+	yieldLED(tb)
 
 	if(delay(FAST_BLINK,previousTime))
 	{
 		turnOnLED2();
 		previousTime = currentTime;
 
-	yieldLED()
+	yieldLED(tb)
 
 	if(delay(FAST_BLINK,previousTime))
 	{
 		turnOffLED2();
 		previousTime = currentTime;
 
-	endTaskLED()
+	endTaskLED(tb)
 }
 
-void blink_LED3_yield()
+void blink_LED3_yield(TaskBlock *tb)
 {
-	static uint32_t state = 0;
 	static uint32_t previousTime = 0;
 	static uint32_t count;
 
 	if(switchControl() == GPIO_PIN_SET)
 	{
-		FAST_BLINK = 5;
+		FAST_BLINK = 20;
 		count = 5;
 	}
-	else
-	{
-		FAST_BLINK = 20;
-	}
 
-	startTaskLED()
-
-	if(delay(FAST_BLINK,previousTime))
-	{
-		turnOnLED4();
-		previousTime = currentTime;
-
-	yieldLED()
-
-	if(count == 0)
-	{
-		state = 0;
-	}
-	if(delay(FAST_BLINK,previousTime))
-	{
-		turnOnLED4();
-		count--;
-		previousTime = currentTime;
-
-	yieldLED()
+	startTaskLED(tb)
 
 	if(delay(FAST_BLINK,previousTime))
 	{
 		turnOffLED4();
 		previousTime = currentTime;
 
-	endTaskLED()
+	yieldLED(tb)
+
+	if(count == 0)
+	{
+		(tb)->state = LED_INITIAL;
+	}
+	if(delay(FAST_BLINK,previousTime))
+	{
+		turnOffLED4();
+		count--;
+		previousTime = currentTime;
+
+	yieldLED(tb)
+
+	if(delay(FAST_BLINK ,previousTime))
+	{
+		turnOnLED4();
+		previousTime = currentTime;
+
+	endTaskLED(tb)
 }
 
-void yieldTest(TaskBlock *tb)
+void blink_4_LEDs(TaskBlock *tb)
 {
-	static uint32_t state = 0;
-	static int here = 0;
+	static uint32_t previousTime = 0;
 
-		startTask(tb);
+	if(switchControl() == GPIO_PIN_SET)
+	{
+		startTaskLED(tb)
+		RunLight1()
+		seriousCase(5)
+		yieldLED(tb)
 
-		here = 0;
-		yield(tb);
-		here = 1;
-		yield(tb);
-		here = 2;
-		yield(tb);
-		here = 3;
-		yield(tb);
+		RunLight2()
+		seriousCase(5)
+		yieldLED(tb)
 
-		endTask();
+		RunLight3()
+		seriousCase(5)
+		yieldLED(tb)
 
+		RunLight4()
+		seriousCase(5)
+		endTaskLED(tb)
+	}
+	else{
+		startTaskLED(tb)
+		turnOffLED4();
+		turnOnLED1();turnOffLED2();
+		seriousCase(10)
+		yieldLED(tb)
+		turnOnLED1();turnOffLED2();
+		seriousCase(10)
+		yieldLED(tb)
+		turnOffLED1();turnOnLED2();
+		seriousCase(10)
+		endTaskLED(tb)
+	}
 }

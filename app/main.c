@@ -8,17 +8,31 @@
 
 int main(void)
 {
+	TaskBlock tb1, tb2, tb3, tb4;
+	initTaskBlock(&tb1);
+	initTaskBlock(&tb2);
+	initTaskBlock(&tb3);
+	initTaskBlock(&tb4);
+
 	initControl();
 	initLED1();
 	initLED2();
 	initLED3();
 	initLED4();
 
+	ETH_HandleTypeDef *heth;
+	HAL_ETH_MspInit(heth);
+	Ethernet_Init(heth);
+	HAL_ETH_Start(heth);
+
+	HAL_ETH_TransmitFrame(heth,1500);
+	//turnOnLED4();
 	while(1)
 		{
-		 //blink_LED1_yield();
-		 //blink_LED2_yield();
-		 //blink_LED3_yield();
+		//blink_LED1_yield(&tb1);
+		//blink_LED2_yield(&tb2);
+		//blink_LED3_yield(&tb3);
+		//blink_4_LEDs(&tb4);
 			/*
 			turnOnLED2();
 			if(switchControl() == GPIO_PIN_SET)
@@ -32,7 +46,7 @@ int main(void)
 				}
 				turnOffLED4();
 			}*/
-
-		Ethernet_Init();
+		//HAL_Delay(50);
+		//Ethernet_Init();
 		}
 }

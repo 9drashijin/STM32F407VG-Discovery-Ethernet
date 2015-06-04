@@ -20,17 +20,20 @@
 
 void init_CLock()
 {
+	__HAL_RCC_ETHMAC_CLK_ENABLE();
+	__HAL_RCC_ETHMACTX_CLK_ENABLE();
+	__HAL_RCC_ETHMACRX_CLK_ENABLE();
+
 	__GPIOA_CLK_ENABLE();
 	__GPIOB_CLK_ENABLE();
 	__GPIOC_CLK_ENABLE();
 
-	__SYSCFG_CLK_ENABLE();
-	__ETH_CLK_ENABLE();
-	__HAL_RCC_ETHMAC_CLK_ENABLE();
-	__HAL_RCC_ETHMACTX_CLK_ENABLE();
-	__HAL_RCC_ETHMACRX_CLK_ENABLE();
+	//__SYSCFG_CLK_ENABLE();
+	//__ETH_CLK_ENABLE();
 }
-
+/*
+ * CONFIGURE GPIO pins: PA1, PA2, PA7
+ * */
 void init_PortA()
 {
 	GPIO_InitTypeDef GpioInfo;
@@ -43,26 +46,30 @@ void init_PortA()
 
 	HAL_GPIO_Init(GPIOA, &GpioInfo);
 }
-
+/*
+ * CONFIGURE GPIO pins: PB11, PB12, PB13
+ * */
 void init_PortB()
 {
 	GPIO_InitTypeDef GpioInfo;
 
 	GpioInfo.Alternate	= GPIO_AF11_ETH;
-	GpioInfo.Mode		= GPIO_MODE_OUTPUT_PP;
+	GpioInfo.Mode		= GPIO_MODE_AF_PP;
 	GpioInfo.Pin 		= GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13;
 	GpioInfo.Pull		= GPIO_NOPULL;
 	GpioInfo.Speed		= GPIO_SPEED_HIGH;
 
 	HAL_GPIO_Init(GPIOB, &GpioInfo);
 }
-
+/*
+ * CONFIGURE GPIO pins: PC1, PC4, PC5
+ * */
 void init_PortC()
 {
 	GPIO_InitTypeDef GpioInfo;
 
 	GpioInfo.Alternate	= GPIO_AF11_ETH;
-	GpioInfo.Mode		= GPIO_MODE_INPUT;
+	GpioInfo.Mode		= GPIO_MODE_AF_PP;
 	GpioInfo.Pin 		= GPIO_PIN_1 | GPIO_PIN_4 | GPIO_PIN_5;
 	GpioInfo.Pull		= GPIO_NOPULL;
 	GpioInfo.Speed		= GPIO_SPEED_HIGH;
@@ -70,58 +77,65 @@ void init_PortC()
 	HAL_GPIO_Init(GPIOC, &GpioInfo);
 }
 
-uint32_t Ethernet_Init()
+void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 {
-	//turnOnLED1();
-
-	ETH_HandleTypeDef *heth;
-	ETH_InitTypeDef init;
-	ETH_DMADescTypeDef  DMARxDscrTab[ETH_RXBUFNB], DMATxDscrTab[ETH_TXBUFNB]; //Rx & Tx DMA Descriptors
-	uint8_t Rx_Buff[ETH_RXBUFNB][ETH_RX_BUF_SIZE]; // Receive buffers
-	uint8_t Tx_Buff[ETH_TXBUFNB][ETH_TX_BUF_SIZE]; // Transmit buffers
-
-	uint8_t mac[6] = {0x48,0x5B,0x39,0x8B,0xA2,0x72};
-
-	//turnOnLED2();
-
-	init.AutoNegotiation = ETH_AUTONEGOTIATION_ENABLE;  // ETH_AUTONEGOTIATION_DISABLE
-	init.Speed = ETH_SPEED_100M;							// ETH_SPEED_10M
-	init.DuplexMode = ETH_MODE_FULLDUPLEX; 				// ETH_MODE_HALFDUPLEX
-	init.PhyAddress = 0x0; //This parameter must be a number between Min_Data = 0 and Max_Data = 32
-	init.MACAddr = mac; //MAC Address of used Hardware: must be pointer on an array of 6 bytes
-	init.RxMode = ETH_RXPOLLING_MODE; 					//ETH_RXINTERRUPT_MODE
-	init.ChecksumMode = ETH_CHECKSUM_BY_SOFTWARE; 		// ETH_CHECKSUM_BY_HARDWARE
-	init.MediaInterface = ETH_MEDIA_INTERFACE_RMII;		// ETH_MEDIA_INTERFACE_RMII
-
-	heth->Init = init;
-
-	//turnOnLED3();
-	HAL_ETH_Init(heth);
-	//turnOnLED4();
 	init_CLock();
 	init_PortA();
 	init_PortB();
 	init_PortC();
 
-	//turnOnLED1();
+	__ETH_CLK_ENABLE();
+	__HAL_RCC_ETH_CLK_ENABLE();
+}
 
-	if(HAL_OK == HAL_ETH_GetState(heth)){turnOnLED1();}
-	else if(HAL_ERROR == HAL_ETH_GetState(heth)){turnOnLED2();}
-	else if(HAL_TIMEOUT == HAL_ETH_GetState(heth)){turnOnLED3();}
-	else if(HAL_BUSY == HAL_ETH_GetState(heth)){turnOnLED4();}
+uint32_t Ethernet_Init(ETH_HandleTypeDef *heth)
+{
+	//turnOnLED1();
+	uint32_t frameLength = 0;
+	ETH_DMADescTypeDef  DMARxDscrTab[ETH_RXBUFNB], DMATxDscrTab[ETH_TXBUFNB]; //Rx & Tx DMA Descriptors
+	uint8_t Rx_Buff[ETH_RXBUFNB][ETH_RX_BUF_SIZE]; // Receive buffers
+	uint8_t Tx_Buff[ETH_TXBUFNB][ETH_TX_BUF_SIZE]; // Transmit buffers
+
+	uint8_t MacAddress[6] = {MAC_ADDR0, MAC_ADDR1, MAC_ADDR2, MAC_ADDR3, MAC_ADDR4, MAC_ADDR5};
+
+	//turnOnLED2();
+
+	heth->Init.AutoNegotiation = ETH_AUTONEGOTIATION_ENABLE;  // ETH_AUTONEGOTIATION_DISABLE
+	heth->Init.Speed = ETH_SPEED_100M;							// ETH_SPEED_10M
+	heth->Init.DuplexMode = ETH_MODE_FULLDUPLEX; 				// ETH_MODE_HALFDUPLEX
+	heth->Init.PhyAddress = DP83848_PHY_ADDRESS; //This parameter must be a number between Min_Data = 0 and Max_Data = 32
+	heth->Init.MACAddr = MacAddress; //MAC Address of used Hardware: must be pointer on an array of 6 bytes
+	heth->Init.RxMode = ETH_RXPOLLING_MODE; 					//ETH_RXINTERRUPT_MODE
+	heth->Init.ChecksumMode = ETH_CHECKSUM_BY_SOFTWARE; 		// ETH_CHECKSUM_BY_HARDWARE
+	heth->Init.MediaInterface = ETH_MEDIA_INTERFACE_RMII;		// ETH_MEDIA_INTERFACE_RMII
+
+	turnOnLED1();
+
+	//turnOnLED2();
+
+	//HAL_ETH_Init(heth);
+	//turnOnLED3();
+
+	/*
+	if(HAL_ETH_Init(heth) == HAL_OK)
+	{
+		turnOnLED4();
+	}*/
 
 	//turnOnLED1();
 	//turnOnLED2();
 	//turnOnLED3();
 	//turnOnLED4();
-	//turnOnLED2();
+
 	//HAL_ETH_DMATxDescListInit(heth, DMATxDscrTab, &Tx_Buff[0][0], ETH_TXBUFNB);
 	//HAL_ETH_DMARxDescListInit(heth, DMARxDscrTab, &Rx_Buff[0][0], ETH_RXBUFNB);
+	//turnOnLED2();
+
+	//HAL_ETH_Start(heth);
+
 	//turnOnLED3();
-
-	HAL_ETH_Start(heth);
-
-	HAL_ETH_TransmitFrame(heth,50);
+	frameLength = 100;
+	//HAL_ETH_TransmitFrame(heth,frameLength);
 
 	//turnOnLED4();
 	return 1;
