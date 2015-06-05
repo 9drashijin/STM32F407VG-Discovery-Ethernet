@@ -88,17 +88,15 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 	__HAL_RCC_ETH_CLK_ENABLE();
 }
 
-uint32_t Ethernet_Init(ETH_HandleTypeDef *heth)
+uint32_t Ethernet_Init()
 {
-	//turnOnLED1();
+	ETH_HandleTypeDef *heth;
 	uint32_t frameLength = 0;
 	ETH_DMADescTypeDef  DMARxDscrTab[ETH_RXBUFNB], DMATxDscrTab[ETH_TXBUFNB]; //Rx & Tx DMA Descriptors
 	uint8_t Rx_Buff[ETH_RXBUFNB][ETH_RX_BUF_SIZE]; // Receive buffers
 	uint8_t Tx_Buff[ETH_TXBUFNB][ETH_TX_BUF_SIZE]; // Transmit buffers
 
 	uint8_t MacAddress[6] = {MAC_ADDR0, MAC_ADDR1, MAC_ADDR2, MAC_ADDR3, MAC_ADDR4, MAC_ADDR5};
-
-	//turnOnLED2();
 
 	heth->Init.AutoNegotiation = ETH_AUTONEGOTIATION_ENABLE;  // ETH_AUTONEGOTIATION_DISABLE
 	heth->Init.Speed = ETH_SPEED_100M;							// ETH_SPEED_10M
@@ -108,24 +106,21 @@ uint32_t Ethernet_Init(ETH_HandleTypeDef *heth)
 	heth->Init.RxMode = ETH_RXPOLLING_MODE; 					//ETH_RXINTERRUPT_MODE
 	heth->Init.ChecksumMode = ETH_CHECKSUM_BY_SOFTWARE; 		// ETH_CHECKSUM_BY_HARDWARE
 	heth->Init.MediaInterface = ETH_MEDIA_INTERFACE_RMII;		// ETH_MEDIA_INTERFACE_RMII
-
-	turnOnLED1();
-
-	//turnOnLED2();
-
-	//HAL_ETH_Init(heth);
-	//turnOnLED3();
-
 	/*
-	if(HAL_ETH_Init(heth) == HAL_OK)
-	{
-		turnOnLED4();
-	}*/
-
+	turnOnLED1();
+	turnOnLED2();
+	turnOnLED3();
+	turnOnLED4();
+	*/
 	//turnOnLED1();
+	HAL_ETH_Init(heth);
 	//turnOnLED2();
-	//turnOnLED3();
-	//turnOnLED4();
+
+	//if(HAL_ETH_Init(&heth) == HAL_OK)
+	//{
+		//turnOnLED4();
+	//}
+
 
 	//HAL_ETH_DMATxDescListInit(heth, DMATxDscrTab, &Tx_Buff[0][0], ETH_TXBUFNB);
 	//HAL_ETH_DMARxDescListInit(heth, DMARxDscrTab, &Rx_Buff[0][0], ETH_RXBUFNB);
@@ -133,10 +128,10 @@ uint32_t Ethernet_Init(ETH_HandleTypeDef *heth)
 
 	//HAL_ETH_Start(heth);
 
-	//turnOnLED3();
-	frameLength = 100;
+	//turnOnLED1();
+	//frameLength = 100;
 	//HAL_ETH_TransmitFrame(heth,frameLength);
 
 	//turnOnLED4();
-	return 1;
+	return HAL_OK;
 }

@@ -20,15 +20,11 @@ int main(void)
 	initLED3();
 	initLED4();
 
-	ETH_HandleTypeDef *heth;
-	HAL_ETH_MspInit(heth);
-	Ethernet_Init(heth);
-	HAL_ETH_Start(heth);
-
-	HAL_ETH_TransmitFrame(heth,1500);
-	//turnOnLED4();
+	//ETH_HandleTypeDef *heth;
+	//HAL_ETH_DeInit(heth);
 	while(1)
 		{
+
 		//blink_LED1_yield(&tb1);
 		//blink_LED2_yield(&tb2);
 		//blink_LED3_yield(&tb3);
@@ -47,6 +43,6 @@ int main(void)
 				turnOffLED4();
 			}*/
 		//HAL_Delay(50);
-		//Ethernet_Init();
+		Ethernet_Init();
 		}
 }
