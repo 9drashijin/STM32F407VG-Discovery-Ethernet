@@ -5,6 +5,3 @@
 
 uint32_t Ethernet_Init();
 void init_CLock();
-void init_PortA();
-void init_PortB();
-void init_PortC();

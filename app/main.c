@@ -20,11 +20,8 @@ int main(void)
 	initLED3();
 	initLED4();
 
-	//ETH_HandleTypeDef *heth;
-	//HAL_ETH_DeInit(heth);
 	while(1)
 		{
-
 		//blink_LED1_yield(&tb1);
 		//blink_LED2_yield(&tb2);
 		//blink_LED3_yield(&tb3);
