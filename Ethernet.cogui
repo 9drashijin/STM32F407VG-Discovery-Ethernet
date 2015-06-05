@@ -17,42 +17,52 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
 <part id="1"/>
-<part id="2"/>
 <part id="3"/>
+<part id="2"/>
 <part id="4"/>
 <part id="5"/>
 <part id="6"/>
+<part id="7"/>
+<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/9drashijin/Desktop/RMB LASTSEM/Ethernet/app/main.c" title="main.c" tooltip="C:/Users/9drashijin/Desktop/RMB LASTSEM/Ethernet/app/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/main.c" title="main.c" tooltip="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="582" selectionTopPixel="210"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="721" selectionTopPixel="210"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Ethernet.c" partName="Ethernet.c" path="C:/Users/9drashijin/Desktop/RMB LASTSEM/Ethernet/app/Ethernet.c" title="Ethernet.c" tooltip="C:/Users/9drashijin/Desktop/RMB LASTSEM/Ethernet/app/Ethernet.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Ethernet.c" partName="Ethernet.c" path="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/Ethernet.c" title="Ethernet.c" tooltip="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/Ethernet.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/Ethernet.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3592" selectionTopPixel="1200"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3461" selectionTopPixel="1355"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Ethernet.h" partName="Ethernet.h" path="C:/Users/9drashijin/Desktop/RMB LASTSEM/Ethernet/app/Ethernet.h" title="Ethernet.h" tooltip="C:/Users/9drashijin/Desktop/RMB LASTSEM/Ethernet/app/Ethernet.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/Ethernet.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="185" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_eth.h" partName="stm32f4xx_hal_eth.h" path="C:/Users/9drashijin/Desktop/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h" title="stm32f4xx_hal_eth.h" tooltip="C:/Users/9drashijin/Desktop/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_eth.h" partName="stm32f4xx_hal_eth.h" path="C:/Users/user1/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h" title="stm32f4xx_hal_eth.h" tooltip="C:/Users/user1/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/Hardware/stm32f4xx_hal_eth.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="116747" selectionTopPixel="32205"/>
+<editorState selectionHorizontalPixel="0" selectionLength="77" selectionOffset="44276" selectionTopPixel="9435"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_def.h" partName="stm32f4xx_hal_def.h" path="C:/Users/9drashijin/Desktop/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h" title="stm32f4xx_hal_def.h" tooltip="C:/Users/9drashijin/Desktop/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/Hardware/stm32f4xx_hal_def.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2965" selectionTopPixel="825"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_conf.h" partName="stm32f4xx_hal_conf.h" path="C:/Users/9drashijin/Desktop/RMB LASTSEM/Ethernet/app/stm32f4xx_hal_conf.h" title="stm32f4xx_hal_conf.h" tooltip="C:/Users/9drashijin/Desktop/RMB LASTSEM/Ethernet/app/stm32f4xx_hal_conf.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/stm32f4xx_hal_conf.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="19" selectionOffset="7992" selectionTopPixel="2205"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_eth.c" partName="stm32f4xx_hal_eth.c" path="C:/Users/9drashijin/Desktop/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c" title="stm32f4xx_hal_eth.c" tooltip="C:/Users/9drashijin/Desktop/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_eth.c" partName="stm32f4xx_hal_eth.c" path="C:/Users/user1/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c" title="stm32f4xx_hal_eth.c" tooltip="C:/Users/user1/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/Hardware/stm32f4xx_hal_eth.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1816" selectionTopPixel="255"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9144" selectionTopPixel="2970"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_conf.h" partName="stm32f4xx_hal_conf.h" path="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/stm32f4xx_hal_conf.h" title="stm32f4xx_hal_conf.h" tooltip="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/stm32f4xx_hal_conf.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/stm32f4xx_hal_conf.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="19" selectionOffset="7810" selectionTopPixel="2160"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_rcc.c" partName="stm32f4xx_hal_rcc.c" path="C:/Users/user1/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" title="stm32f4xx_hal_rcc.c" tooltip="C:/Users/user1/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/Hardware/stm32f4xx_hal_rcc.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="36137" selectionTopPixel="13365"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Ethernet.h" partName="Ethernet.h" path="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/Ethernet.h" title="Ethernet.h" tooltip="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/Ethernet.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/Ethernet.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="139" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_gpio.c" partName="stm32f4xx_hal_gpio.c" path="C:/Users/user1/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" title="stm32f4xx_hal_gpio.c" tooltip="C:/Users/user1/STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/Hardware/stm32f4xx_hal_gpio.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="18159" selectionTopPixel="6375"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx.h" partName="stm32f4xx.h" path="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/stm32f4xx.h" title="stm32f4xx.h" tooltip="C:/Users/user1/Desktop/STM32F407VG-Discovery-Ethernet-master/app/stm32f4xx.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Ethernet/stm32f4xx.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="7406" selectionTopPixel="2340"/>
 </editor>
 </editors>
 <views>
@@ -64,13 +74,20 @@
 <element path="/Ethernet/Hardware"/>
 </expanded>
 <selection>
-<element path="/Ethernet/Hardware/stm32f4xx_hal_eth.c"/>
+<element path="/Ethernet/Ethernet.h"/>
 </selection>
 </viewState>
+</view>
+<view id="org.coocox.codebugger.trace.ui.traceview" partName="Semihosting">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.DebugView" partName="Debug">
+<viewState/>
 </view>
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
 <viewState/>
 </view>
+<view id="org.eclipse.debug.ui.VariableView" partName="Variables"/>
 </views>
 <perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="org.coocox.builder.perspective.CoBuilder">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
@@ -94,8 +111,8 @@
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showMemoryBrowserAction"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showVariablesAction"/>
 <hide_menu_item_id id="org.coocox.builder.ui.openProjectExplorerAction"/>
-<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <hide_menu_item_id id="org.coocox.codebugger.trace.actions.ShowTraceControlAction"/>
+<hide_menu_item_id id="org.eclipse.debug.ui.commands.TerminateAndRelaunch"/>
 <hide_menu_item_id id="org.coocox.codebugger.configuration.showRegistersAction"/>
 <hide_toolbar_item_id id="org.eclipse.cdt.debug.internal.ui.actions.ToggleInstructionStepModeAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
@@ -120,7 +137,7 @@
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1b0c521" ratio="0.6511376" ratioLeft="601" ratioRight="322" relationship="4" relative="org.eclipse.ui.internal.ViewStack@7bfd07">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1b0c521" ratio="0.74571806" ratioLeft="566" ratioRight="193" relationship="4" relative="org.eclipse.ui.internal.ViewStack@7bfd07">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -128,7 +145,7 @@
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.22451612" ratioLeft="348" ratioRight="1202" relationship="2" relative="org.eclipse.ui.internal.ViewStack@7bfd07"/>
+<info part="org.eclipse.ui.editorss" ratio="0.15915915" ratioLeft="106" ratioRight="560" relationship="2" relative="org.eclipse.ui.internal.ViewStack@7bfd07"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@210d2e" ratio="0.7192308" ratioLeft="561" ratioRight="219" relationship="2" relative="org.eclipse.ui.editorss">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
@@ -140,164 +157,267 @@
 </mainWindow>
 </layout>
 </perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.coocox.codebugger.configuration.ui.Perspective" id="org.coocox.codebugger.configuration.perspective" label="CoDebugger"/>
+<alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<hide_menu_item_id id="org.coocox.builder.ui.newFile"/>
+<hide_menu_item_id id="org.coocox.builder.ui.newFolder"/>
+<hide_menu_item_id id="org.coocox.builder.ui.openFile"/>
+<hide_menu_item_id id="org.eclipse.ui.file.save"/>
+<hide_menu_item_id id="org.eclipse.ui.file.saveAs"/>
+<hide_menu_item_id id="org.eclipse.ui.file.saveAll"/>
+<hide_menu_item_id id="org.coocox.builder.rcp.projectMenu"/>
+<hide_menu_item_id id="org.coocox.builder.rcp.flashMenu"/>
+<hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction"/>
+<hide_menu_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_menu_item_id id="org.coocox.builder.ui.debug"/>
+<hide_menu_item_id id="org.coocox.builder.ui.build"/>
+<hide_menu_item_id id="org.coocox.builder.ui.rebuild"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
+<hide_menu_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
+<hide_menu_item_id id="org.coocox.welcome.ui.action.welcome"/>
+<hide_menu_item_id id="org.coocox.welcome.ui.action.repository"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.newProject"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.newFile"/>
+<hide_toolbar_item_id id="org.eclipse.ui.file.save"/>
+<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.rebuild"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.debug"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideFlashEraseAction"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.actions.TargetManageAction"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
+<hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
+<hide_toolbar_item_id id="org.coocox.welcome.ui.action.repository"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.debug.ui.DebugView"/>
+<view id="org.coocox.codebugger.trace.ui.traceview"/>
+<view id="org.eclipse.debug.ui.VariableView"/>
+<view id="org.coocox.builder.ui.views.ProjectView"/>
+<fastViewBars/>
+<viewLayoutRec closeable="false" id="org.eclipse.debug.ui.DebugView"/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1d95267">
+<folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="1074" ratioRight="358" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1d95267">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@19dce62" ratio="0.69947505" ratioLeft="533" ratioRight="229" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1d95267">
+<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@15007bb" ratio="0.5" ratioLeft="716" ratioRight="716" relationship="2" relative="org.eclipse.ui.internal.ViewStack@19dce62">
+<folder activePageID="org.coocox.codebugger.trace.ui.traceview" appearance="2" expanded="2">
+<page content="org.coocox.codebugger.trace.ui.traceview" label="Semihosting"/>
+<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.MemoryView" label="LabelNotFound"/>
+<page content="org.eclipse.cdt.debug.ui.memory.memorybrowser.MemoryBrowser" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@2a7e88" ratio="0.75" ratioLeft="1074" ratioRight="358" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1d95267">
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.cdt.dsf.debug.ui.disassembly.view" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
+<page content="org.coocox.coassistant.view.CoAssistantView_debug" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.29981378" ratioLeft="322" ratioRight="752" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1d95267"/>
+</mainWindow>
+</layout>
+</perspective>
 </perspectives>
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Ethernet/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Ethernet/Ethernet.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Ethernet/Hardware/stm32f4xx_hal_gpio.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Ethernet/Hardware/stm32f4xx_hal_eth.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Ethernet/Ethernet.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Ethernet/stm32f4xx.h"/>
 </editors>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="1872" y="0"/>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="10970" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="11003" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="11065" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="11120" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="11198" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="11229" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="11280" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1198" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1236" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1272" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1332" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1364" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1401" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="8995" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1437" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1475" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1511" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1568" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1600" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="1637" y="0"/>
 </item>
 <item historyLabel="stm32f4xx_hal_eth.c" index="2">
-<position info="not_deleted" x="1816" y="0"/>
+<position info="not_deleted" x="8667" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="1872" y="0"/>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="18023" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="2224" y="0"/>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="18062" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="2452" y="91"/>
+<item historyLabel="stm32f4xx_hal_gpio.c" index="1">
+<position info="not_deleted" x="18159" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="1995" y="0"/>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="8739" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="2067" y="26"/>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="8807" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="3347" y="0"/>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="8853" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="3449" y="80"/>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="9098" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="2047" y="0"/>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="8786" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="1829" y="15"/>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="960" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="568" y="0"/>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="8155" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="3630" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="1890" y="16"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="3895" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="8737" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="3895" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
 <position/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="921" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="1829" y="15"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="921" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="537" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
+<item historyLabel="Ethernet.c" index="0">
 <position/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="537" y="0"/>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="8737" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="537" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
+<item historyLabel="Ethernet.c" index="0">
 <position/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="559" y="0"/>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="8737" y="0"/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="3264" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="519" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
+<item historyLabel="Ethernet.c" index="0">
 <position/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
+<item historyLabel="stm32f4xx.h" index="3">
+<position info="not_deleted" x="7406" y="10"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
+<position info="not_deleted" x="2464" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="8737" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
 <position/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="9592" y="0"/>
+</item>
+<item historyLabel="Ethernet.c" index="0">
 <position/>
 </item>
-<item historyLabel="Ethernet.c" index="1">
+<item historyLabel="stm32f4xx_hal_eth.c" index="2">
+<position info="not_deleted" x="9144" y="0"/>
+</item>
+<item active="true" historyLabel="Ethernet.c" index="0">
 <position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="2065" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="1995" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="506" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="2482" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="537" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="3618" y="40"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="483" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="3592" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="483" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="3367" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="458" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="2065" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="458" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="3291" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="435" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="3222" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="582" y="0"/>
-</item>
-<item historyLabel="Ethernet.c" index="1">
-<position info="not_deleted" x="3592" y="0"/>
-</item>
-<item historyLabel="Ethernet.h" index="3">
-<position info="not_deleted" x="185" y="0"/>
-</item>
-<item active="true" historyLabel="main.c" index="0">
-<position info="not_deleted" x="582" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -306,52 +426,50 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_eth.c" tooltip="Ethernet/Hardware/stm32f4xx_hal_eth.c">
-<persistable path="/Ethernet/Hardware/stm32f4xx_hal_eth.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx.h" tooltip="Ethernet/stm32f4xx.h">
+<persistable path="/Ethernet/stm32f4xx.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_gpio.c" tooltip="Ethernet/Hardware/stm32f4xx_hal_gpio.c">
+<persistable path="/Ethernet/Hardware/stm32f4xx_hal_gpio.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="startup_stm32f407xx.s" tooltip="Ethernet/startup_stm32f407xx.s">
+<persistable path="/Ethernet/startup_stm32f407xx.s"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Ethernet.h" tooltip="Ethernet/Ethernet.h">
+<persistable path="/Ethernet/Ethernet.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_rcc.c" tooltip="Ethernet/Hardware/stm32f4xx_hal_rcc.c">
 <persistable path="/Ethernet/Hardware/stm32f4xx_hal_rcc.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_rcc.h" tooltip="Ethernet/Hardware/stm32f4xx_hal_rcc.h">
-<persistable path="/Ethernet/Hardware/stm32f4xx_hal_rcc.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_conf.h" tooltip="Ethernet/stm32f4xx_hal_conf.h">
 <persistable path="/Ethernet/stm32f4xx_hal_conf.h"/>
 </file>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
-<persistable>
-<org.coocox.welcome.ui.WelcomePage/>
-</persistable>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_def.h" tooltip="Ethernet/Hardware/stm32f4xx_hal_def.h">
+<persistable path="/Ethernet/Hardware/stm32f4xx_hal_def.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f429i_discovery_lcd.c" tooltip="Test1/Hardware/stm32f429i_discovery_lcd.c">
-<persistable path="/Test1/Hardware/stm32f429i_discovery_lcd.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal.h" tooltip="Ethernet/Hardware/stm32f4xx_hal.h">
+<persistable path="/Ethernet/Hardware/stm32f4xx_hal.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f429i_discovery_lcd.h" tooltip="Test1/Hardware/stm32f429i_discovery_lcd.h">
-<persistable path="/Test1/Hardware/stm32f429i_discovery_lcd.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal.c" tooltip="Ethernet/Hardware/stm32f4xx_hal.c">
+<persistable path="/Ethernet/Hardware/stm32f4xx_hal.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f429i_discovery_sdram.c" tooltip="Test1/Hardware/stm32f429i_discovery_sdram.c">
-<persistable path="/Test1/Hardware/stm32f429i_discovery_sdram.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f407xx.h" tooltip="Ethernet/stm32f407xx.h">
+<persistable path="/Ethernet/stm32f407xx.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_it.c" tooltip="Test1/Hardware/stm32f4xx_it.c">
-<persistable path="/Test1/Hardware/stm32f4xx_it.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="LED.c" tooltip="Ethernet/LED.c">
+<persistable path="/Ethernet/LED.c"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f429i_discovery_lcd.h" tooltip="C:\Users\9drashijin\Desktop\RMB LASTSEM\stm32f429i_discovery_lcd.h">
-<persistable uri="file:/C:/Users/9drashijin/Desktop/RMB%20LASTSEM/stm32f429i_discovery_lcd.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_eth.c" tooltip="Ethernet/Hardware/stm32f4xx_hal_eth.c">
+<persistable path="/Ethernet/Hardware/stm32f4xx_hal_eth.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Ethernet.c" tooltip="Test1/Ethernet.c">
-<persistable path="/Test1/Ethernet.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_eth.h" tooltip="Ethernet/Hardware/stm32f4xx_hal_eth.h">
+<persistable path="/Ethernet/Hardware/stm32f4xx_hal_eth.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_gpio.c" tooltip="Test1/Hardware/stm32f4xx_hal_gpio.c">
-<persistable path="/Test1/Hardware/stm32f4xx_hal_gpio.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Ethernet.c" tooltip="Ethernet/Ethernet.c">
+<persistable path="/Ethernet/Ethernet.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal_gpio.h" tooltip="Test1/Hardware/stm32f4xx_hal_gpio.h">
-<persistable path="/Test1/Hardware/stm32f4xx_hal_gpio.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal.h" tooltip="Test1/Hardware/stm32f4xx_hal.h">
-<persistable path="/Test1/Hardware/stm32f4xx_hal.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_hal.c" tooltip="Test1/Hardware/stm32f4xx_hal.c">
-<persistable path="/Test1/Hardware/stm32f4xx_hal.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="Ethernet/main.c">
+<persistable path="/Ethernet/main.c"/>
 </file>
 </mruList>
 </workbench>

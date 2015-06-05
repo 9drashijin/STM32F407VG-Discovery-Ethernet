@@ -38,7 +38,6 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		__ETH_CLK_ENABLE();
 		__HAL_RCC_ETH_CLK_ENABLE();
 
-		__ETH_CLK_ENABLE();
 		__GPIOA_CLK_ENABLE();
 		__GPIOB_CLK_ENABLE();
 		__GPIOC_CLK_ENABLE();
@@ -63,6 +62,20 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		GpioInfo.Pull		= GPIO_NOPULL;
 		GpioInfo.Speed		= GPIO_SPEED_HIGH;
 		HAL_GPIO_Init(GPIOC, &GpioInfo);
+
+		//PE2 Reset pin: Optional
+
+		GpioInfo.Mode		= GPIO_MODE_OUTPUT_PP;
+		GpioInfo.Pin 		= GPIO_PIN_2;
+		GpioInfo.Pull		= GPIO_PULLUP;
+		GpioInfo.Speed		= GPIO_SPEED_FAST;
+		HAL_GPIO_Init(GPIOE, &GpioInfo);
+
+		int i;
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_RESET);
+		for (i = 0; i < 20000; i++);
+		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_SET);
+		for (i = 0; i < 20000; i++);
 	}
 }
 
@@ -118,8 +131,8 @@ uint32_t Ethernet_Init()
 	HAL_ETH_Start(&heth);
 
 	//turnOnLED1();
-	//frameLength = 100;
-	//HAL_ETH_TransmitFrame(&heth,frameLength);
+	frameLength = 100;
+	HAL_ETH_TransmitFrame(&heth,frameLength);
 
 	//turnOnLED4();
 	return HAL_OK;
