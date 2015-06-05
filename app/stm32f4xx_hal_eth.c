@@ -100,6 +100,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+#include "LED.h"
 
 /** @addtogroup STM32F4xx_HAL_Driver
   * @{
@@ -176,6 +177,7 @@ static void ETH_FlushTransmitFIFO(ETH_HandleTypeDef *heth);
   */
 HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth)
 {
+  //turnOnLED1();
   uint32_t tmpreg1 = 0, phyreg = 0;
   uint32_t hclk = 60000000;
   uint32_t tickstart = 0;
@@ -186,6 +188,7 @@ HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth)
   {
     return HAL_ERROR;
   }
+  turnOnLED1();
   
   /* Check parameters */
   assert_param(IS_ETH_AUTONEGOTIATION(heth->Init.AutoNegotiation));
@@ -193,14 +196,20 @@ HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth)
   assert_param(IS_ETH_CHECKSUM_MODE(heth->Init.ChecksumMode));
   assert_param(IS_ETH_MEDIA_INTERFACE(heth->Init.MediaInterface));  
   
+  if(heth->State == HAL_ETH_STATE_READY){turnOnLED2();}
+  else if(heth->State == HAL_ETH_STATE_ERROR){turnOnLED3();}
+  else{ turnOnLED4();}
+  //else if(heth->State == HAL_ETH_STATE_BUSY_RD){turnOnLED4();}
+
   if(heth->State == HAL_ETH_STATE_RESET)
   {
     /* Allocate lock resource and initialize it */
     heth->Lock = HAL_UNLOCKED;
     /* Init the low level hardware : GPIO, CLOCK, NVIC. */
+
     HAL_ETH_MspInit(heth);
   }
-  
+  //turnOnLED3();
   /* Enable SYSCFG Clock */
   __HAL_RCC_SYSCFG_CLK_ENABLE();
   
