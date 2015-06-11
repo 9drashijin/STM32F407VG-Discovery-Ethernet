@@ -177,65 +177,57 @@ static void ETH_FlushTransmitFIFO(ETH_HandleTypeDef *heth);
   */
 HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth)
 {
-  //turnOnLED1();
   uint32_t tmpreg1 = 0, phyreg = 0;
   uint32_t hclk = 60000000;
   uint32_t tickstart = 0;
   uint32_t err = ETH_SUCCESS;
-  
+
   /* Check the ETH peripheral state */
   if(heth == NULL)
   {
     return HAL_ERROR;
   }
-  turnOnLED1();
-  
+
   /* Check parameters */
   assert_param(IS_ETH_AUTONEGOTIATION(heth->Init.AutoNegotiation));
   assert_param(IS_ETH_RX_MODE(heth->Init.RxMode));
   assert_param(IS_ETH_CHECKSUM_MODE(heth->Init.ChecksumMode));
-  assert_param(IS_ETH_MEDIA_INTERFACE(heth->Init.MediaInterface));  
-  
-  if(heth->State == HAL_ETH_STATE_READY){turnOnLED2();}
-  else if(heth->State == HAL_ETH_STATE_ERROR){turnOnLED3();}
-  else{ turnOnLED4();}
-  //else if(heth->State == HAL_ETH_STATE_BUSY_RD){turnOnLED4();}
+  assert_param(IS_ETH_MEDIA_INTERFACE(heth->Init.MediaInterface));
 
   if(heth->State == HAL_ETH_STATE_RESET)
   {
     /* Allocate lock resource and initialize it */
     heth->Lock = HAL_UNLOCKED;
     /* Init the low level hardware : GPIO, CLOCK, NVIC. */
-
     HAL_ETH_MspInit(heth);
   }
-  //turnOnLED3();
+
   /* Enable SYSCFG Clock */
   __HAL_RCC_SYSCFG_CLK_ENABLE();
-  
+
   /* Select MII or RMII Mode*/
   SYSCFG->PMC &= ~(SYSCFG_PMC_MII_RMII_SEL);
   SYSCFG->PMC |= (uint32_t)heth->Init.MediaInterface;
-  
+
   /* Ethernet Software reset */
   /* Set the SWR bit: resets all MAC subsystem internal registers and logic */
   /* After reset all the registers holds their respective reset values */
   (heth->Instance)->DMABMR |= ETH_DMABMR_SR;
-  
+  //turnOnLED1();
   /* Wait for software reset */
   while (((heth->Instance)->DMABMR & ETH_DMABMR_SR) != (uint32_t)RESET)
   {
   }
-  
+  //turnOnLED2();
   /*-------------------------------- MAC Initialization ----------------------*/
   /* Get the ETHERNET MACMIIAR value */
   tmpreg1 = (heth->Instance)->MACMIIAR;
   /* Clear CSR Clock Range CR[2:0] bits */
   tmpreg1 &= ETH_MACMIIAR_CR_MASK;
-  
+
   /* Get hclk frequency value */
   hclk = HAL_RCC_GetHCLKFreq();
-  
+
   /* Set CR bits depending on hclk value */
   if((hclk >= 20000000)&&(hclk < 35000000))
   {
@@ -244,156 +236,156 @@ HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth)
   }
   else if((hclk >= 35000000)&&(hclk < 60000000))
   {
-    /* CSR Clock Range between 35-60 MHz */ 
+    /* CSR Clock Range between 35-60 MHz */
     tmpreg1 |= (uint32_t)ETH_MACMIIAR_CR_Div26;
-  }  
+  }
   else if((hclk >= 60000000)&&(hclk < 100000000))
   {
-    /* CSR Clock Range between 60-100 MHz */ 
+    /* CSR Clock Range between 60-100 MHz */
     tmpreg1 |= (uint32_t)ETH_MACMIIAR_CR_Div42;
-  }  
+  }
   else if((hclk >= 100000000)&&(hclk < 150000000))
   {
-    /* CSR Clock Range between 100-150 MHz */ 
+    /* CSR Clock Range between 100-150 MHz */
     tmpreg1 |= (uint32_t)ETH_MACMIIAR_CR_Div62;
   }
   else /* ((hclk >= 150000000)&&(hclk <= 168000000)) */
   {
-    /* CSR Clock Range between 150-168 MHz */ 
-    tmpreg1 |= (uint32_t)ETH_MACMIIAR_CR_Div102;    
+    /* CSR Clock Range between 150-168 MHz */
+    tmpreg1 |= (uint32_t)ETH_MACMIIAR_CR_Div102;
   }
-  
+
   /* Write to ETHERNET MAC MIIAR: Configure the ETHERNET CSR Clock Range */
   (heth->Instance)->MACMIIAR = (uint32_t)tmpreg1;
-  
+  //turnOnLED3();
   /*-------------------- PHY initialization and configuration ----------------*/
   /* Put the PHY in reset mode */
   if((HAL_ETH_WritePHYRegister(heth, PHY_BCR, PHY_RESET)) != HAL_OK)
   {
     /* In case of write timeout */
     err = ETH_ERROR;
-    
+
     /* Config MAC and DMA */
     ETH_MACDMAConfig(heth, err);
-    
+
     /* Set the ETH peripheral state to READY */
     heth->State = HAL_ETH_STATE_READY;
-    
+
     /* Return HAL_ERROR */
     return HAL_ERROR;
   }
-  
+  //turnOnLED3();
   /* Delay to assure PHY reset */
-  HAL_Delay(PHY_RESET_DELAY);
-  
+  //HAL_Delay(PHY_RESET_DELAY);
+  //turnOnLED4();
   if((heth->Init).AutoNegotiation != ETH_AUTONEGOTIATION_DISABLE)
   {
     /* Get tick */
     tickstart = HAL_GetTick();
-    
+
     /* We wait for linked status */
     do
     {
       HAL_ETH_ReadPHYRegister(heth, PHY_BSR, &phyreg);
-      
+
       /* Check for the Timeout */
       if((HAL_GetTick() - tickstart ) > LINKED_STATE_TIMEOUT_VALUE)
       {
         /* In case of write timeout */
         err = ETH_ERROR;
-      
+
         /* Config MAC and DMA */
         ETH_MACDMAConfig(heth, err);
-        
+
         heth->State= HAL_ETH_STATE_READY;
-  
+
         /* Process Unlocked */
         __HAL_UNLOCK(heth);
-    
+
         return HAL_TIMEOUT;
       }
     } while (((phyreg & PHY_LINKED_STATUS) != PHY_LINKED_STATUS));
 
-    
+
     /* Enable Auto-Negotiation */
     if((HAL_ETH_WritePHYRegister(heth, PHY_BCR, PHY_AUTONEGOTIATION)) != HAL_OK)
     {
       /* In case of write timeout */
       err = ETH_ERROR;
-      
+
       /* Config MAC and DMA */
       ETH_MACDMAConfig(heth, err);
-      
+
       /* Set the ETH peripheral state to READY */
       heth->State = HAL_ETH_STATE_READY;
-      
+
       /* Return HAL_ERROR */
-      return HAL_ERROR;   
+      return HAL_ERROR;
     }
-    
+
     /* Get tick */
     tickstart = HAL_GetTick();
-    
+
     /* Wait until the auto-negotiation will be completed */
     do
     {
       HAL_ETH_ReadPHYRegister(heth, PHY_BSR, &phyreg);
-      
+
       /* Check for the Timeout */
       if((HAL_GetTick() - tickstart ) > AUTONEGO_COMPLETED_TIMEOUT_VALUE)
       {
         /* In case of write timeout */
         err = ETH_ERROR;
-      
+
         /* Config MAC and DMA */
         ETH_MACDMAConfig(heth, err);
-        
+
         heth->State= HAL_ETH_STATE_READY;
-  
+
         /* Process Unlocked */
         __HAL_UNLOCK(heth);
-    
+
         return HAL_TIMEOUT;
       }
-      
+
     } while (((phyreg & PHY_AUTONEGO_COMPLETE) != PHY_AUTONEGO_COMPLETE));
-    
+
     /* Read the result of the auto-negotiation */
     if((HAL_ETH_ReadPHYRegister(heth, PHY_SR, &phyreg)) != HAL_OK)
     {
       /* In case of write timeout */
       err = ETH_ERROR;
-      
+
       /* Config MAC and DMA */
       ETH_MACDMAConfig(heth, err);
-      
+
       /* Set the ETH peripheral state to READY */
       heth->State = HAL_ETH_STATE_READY;
-      
+
       /* Return HAL_ERROR */
-      return HAL_ERROR;   
+      return HAL_ERROR;
     }
-    
+
     /* Configure the MAC with the Duplex Mode fixed by the auto-negotiation process */
     if((phyreg & PHY_DUPLEX_STATUS) != (uint32_t)RESET)
     {
       /* Set Ethernet duplex mode to Full-duplex following the auto-negotiation */
-      (heth->Init).DuplexMode = ETH_MODE_FULLDUPLEX;  
+      (heth->Init).DuplexMode = ETH_MODE_FULLDUPLEX;
     }
     else
     {
       /* Set Ethernet duplex mode to Half-duplex following the auto-negotiation */
-      (heth->Init).DuplexMode = ETH_MODE_HALFDUPLEX;           
+      (heth->Init).DuplexMode = ETH_MODE_HALFDUPLEX;
     }
     /* Configure the MAC with the speed fixed by the auto-negotiation process */
     if((phyreg & PHY_SPEED_STATUS) == PHY_SPEED_STATUS)
-    {  
+    {
       /* Set Ethernet speed to 10M following the auto-negotiation */
-      (heth->Init).Speed = ETH_SPEED_10M; 
+      (heth->Init).Speed = ETH_SPEED_10M;
     }
     else
-    {   
-      /* Set Ethernet speed to 100M following the auto-negotiation */ 
+    {
+      /* Set Ethernet speed to 100M following the auto-negotiation */
       (heth->Init).Speed = ETH_SPEED_100M;
     }
   }
@@ -402,34 +394,34 @@ HAL_StatusTypeDef HAL_ETH_Init(ETH_HandleTypeDef *heth)
     /* Check parameters */
     assert_param(IS_ETH_SPEED(heth->Init.Speed));
     assert_param(IS_ETH_DUPLEX_MODE(heth->Init.DuplexMode));
-    
+
     /* Set MAC Speed and Duplex Mode */
     if(HAL_ETH_WritePHYRegister(heth, PHY_BCR, ((uint16_t)((heth->Init).DuplexMode >> 3) |
                                                 (uint16_t)((heth->Init).Speed >> 1))) != HAL_OK)
     {
       /* In case of write timeout */
       err = ETH_ERROR;
-      
+
       /* Config MAC and DMA */
       ETH_MACDMAConfig(heth, err);
-      
+
       /* Set the ETH peripheral state to READY */
       heth->State = HAL_ETH_STATE_READY;
-      
+
       /* Return HAL_ERROR */
       return HAL_ERROR;
-    }  
-    
+    }
+
     /* Delay to assure PHY configuration */
     HAL_Delay(PHY_CONFIG_DELAY);
   }
-  
+  //turnOnLED4();
   /* Config MAC and DMA */
   ETH_MACDMAConfig(heth, err);
-  
+  //turnOnLED3();
   /* Set ETH HAL State to Ready */
   heth->State= HAL_ETH_STATE_READY;
-  
+  //turnOnLED4();
   /* Return function status */
   return HAL_OK;
 }
@@ -1209,13 +1201,13 @@ HAL_StatusTypeDef HAL_ETH_Start(ETH_HandleTypeDef *heth)
   
   /* Set the ETH peripheral state to BUSY */
   heth->State = HAL_ETH_STATE_BUSY;
-  
+  //turnOnLED1();
   /* Enable transmit state machine of the MAC for transmission on the MII */
   ETH_MACTransmissionEnable(heth);
-  
+
   /* Enable receive state machine of the MAC for reception from the MII */
   ETH_MACReceptionEnable(heth);
-  
+  //turnOnLED2();
   /* Flush Transmit FIFO */
   ETH_FlushTransmitFIFO(heth);
   
@@ -1230,7 +1222,7 @@ HAL_StatusTypeDef HAL_ETH_Start(ETH_HandleTypeDef *heth)
   
   /* Process Unlocked */
   __HAL_UNLOCK(heth);
-  
+  //turnOnLED3();
   /* Return function status */
   return HAL_OK;
 }
@@ -1585,7 +1577,7 @@ static void ETH_MACDMAConfig(ETH_HandleTypeDef *heth, uint32_t err)
   ETH_MACInitTypeDef macinit;
   ETH_DMAInitTypeDef dmainit;
   uint32_t tmpreg1 = 0;
-  
+  //turnOnLED2();
   if (err != ETH_SUCCESS) /* Auto-negotiation failed */
   {
     /* Set Ethernet duplex mode to Full-duplex */
@@ -1671,7 +1663,9 @@ static void ETH_MACDMAConfig(ETH_HandleTypeDef *heth, uint32_t err)
   /* Wait until the write operation will be taken into account:
      at least four TX_CLK/RX_CLK clock cycles */
   tmpreg1 = (heth->Instance)->MACCR;
-  HAL_Delay(ETH_REG_WRITE_DELAY);
+  //turnOnLED3();
+  //HAL_Delay(ETH_REG_WRITE_DELAY);
+  //turnOnLED4();
   (heth->Instance)->MACCR = tmpreg1; 
   
   /*----------------------- ETHERNET MACFFR Configuration --------------------*/ 
@@ -1696,7 +1690,8 @@ static void ETH_MACDMAConfig(ETH_HandleTypeDef *heth, uint32_t err)
    /* Wait until the write operation will be taken into account:
       at least four TX_CLK/RX_CLK clock cycles */
    tmpreg1 = (heth->Instance)->MACFFR;
-   HAL_Delay(ETH_REG_WRITE_DELAY);
+   //turnOnLED3();
+   //HAL_Delay(ETH_REG_WRITE_DELAY);
    (heth->Instance)->MACFFR = tmpreg1;
    
    /*--------------- ETHERNET MACHTHR and MACHTLR Configuration --------------*/
@@ -1731,7 +1726,8 @@ static void ETH_MACDMAConfig(ETH_HandleTypeDef *heth, uint32_t err)
    /* Wait until the write operation will be taken into account:
    at least four TX_CLK/RX_CLK clock cycles */
    tmpreg1 = (heth->Instance)->MACFCR;
-   HAL_Delay(ETH_REG_WRITE_DELAY);
+   //turnOnLED3();
+   //HAL_Delay(ETH_REG_WRITE_DELAY);
    (heth->Instance)->MACFCR = tmpreg1;
    
    /*----------------------- ETHERNET MACVLANTR Configuration ----------------*/
@@ -1743,7 +1739,8 @@ static void ETH_MACDMAConfig(ETH_HandleTypeDef *heth, uint32_t err)
     /* Wait until the write operation will be taken into account:
        at least four TX_CLK/RX_CLK clock cycles */
     tmpreg1 = (heth->Instance)->MACVLANTR;
-    HAL_Delay(ETH_REG_WRITE_DELAY);
+    //turnOnLED3();
+    //HAL_Delay(ETH_REG_WRITE_DELAY);
     (heth->Instance)->MACVLANTR = tmpreg1;
     
     /* Ethernet DMA default initialization ************************************/
@@ -1794,7 +1791,8 @@ static void ETH_MACDMAConfig(ETH_HandleTypeDef *heth, uint32_t err)
     /* Wait until the write operation will be taken into account:
        at least four TX_CLK/RX_CLK clock cycles */
     tmpreg1 = (heth->Instance)->DMAOMR;
-    HAL_Delay(ETH_REG_WRITE_DELAY);
+    //turnOnLED3();
+    //HAL_Delay(ETH_REG_WRITE_DELAY);
     (heth->Instance)->DMAOMR = tmpreg1;
     
     /*----------------------- ETHERNET DMABMR Configuration ------------------*/
@@ -1817,7 +1815,8 @@ static void ETH_MACDMAConfig(ETH_HandleTypeDef *heth, uint32_t err)
      /* Wait until the write operation will be taken into account:
         at least four TX_CLK/RX_CLK clock cycles */
      tmpreg1 = (heth->Instance)->DMABMR;
-     HAL_Delay(ETH_REG_WRITE_DELAY);
+     //turnOnLED3();
+     //HAL_Delay(ETH_REG_WRITE_DELAY);
      (heth->Instance)->DMABMR = tmpreg1;
 
      if((heth->Init).RxMode == ETH_RXINTERRUPT_MODE)
@@ -1828,6 +1827,7 @@ static void ETH_MACDMAConfig(ETH_HandleTypeDef *heth, uint32_t err)
 
      /* Initialize MAC address in ethernet MAC */ 
      ETH_MACAddressConfig(heth, ETH_MAC_ADDRESS0, heth->Init.MACAddr);
+     //turnOnLED4();
 }
 
 /**
@@ -1877,7 +1877,7 @@ static void ETH_MACTransmissionEnable(ETH_HandleTypeDef *heth)
   /* Wait until the write operation will be taken into account:
      at least four TX_CLK/RX_CLK clock cycles */
   tmpreg1 = (heth->Instance)->MACCR;
-  HAL_Delay(ETH_REG_WRITE_DELAY);
+  //HAL_Delay(ETH_REG_WRITE_DELAY);
   (heth->Instance)->MACCR = tmpreg1;
 }
 
@@ -1897,7 +1897,7 @@ static void ETH_MACTransmissionDisable(ETH_HandleTypeDef *heth)
   /* Wait until the write operation will be taken into account:
      at least four TX_CLK/RX_CLK clock cycles */
   tmpreg1 = (heth->Instance)->MACCR;
-  HAL_Delay(ETH_REG_WRITE_DELAY);
+  //HAL_Delay(ETH_REG_WRITE_DELAY);
   (heth->Instance)->MACCR = tmpreg1;
 }
 
@@ -1917,7 +1917,7 @@ static void ETH_MACReceptionEnable(ETH_HandleTypeDef *heth)
   /* Wait until the write operation will be taken into account:
      at least four TX_CLK/RX_CLK clock cycles */
   tmpreg1 = (heth->Instance)->MACCR;
-  HAL_Delay(ETH_REG_WRITE_DELAY);
+  //HAL_Delay(ETH_REG_WRITE_DELAY);
   (heth->Instance)->MACCR = tmpreg1;
 }
 
@@ -1937,7 +1937,7 @@ static void ETH_MACReceptionDisable(ETH_HandleTypeDef *heth)
   /* Wait until the write operation will be taken into account:
      at least four TX_CLK/RX_CLK clock cycles */
   tmpreg1 = (heth->Instance)->MACCR;
-  HAL_Delay(ETH_REG_WRITE_DELAY);
+  //HAL_Delay(ETH_REG_WRITE_DELAY);
   (heth->Instance)->MACCR = tmpreg1;
 }
 
@@ -2005,7 +2005,7 @@ static void ETH_FlushTransmitFIFO(ETH_HandleTypeDef *heth)
   /* Wait until the write operation will be taken into account:
      at least four TX_CLK/RX_CLK clock cycles */
   tmpreg1 = (heth->Instance)->DMAOMR;
-  HAL_Delay(ETH_REG_WRITE_DELAY);
+  //HAL_Delay(ETH_REG_WRITE_DELAY);
   (heth->Instance)->DMAOMR = tmpreg1;
 }
 
