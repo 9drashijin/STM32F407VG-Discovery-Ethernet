@@ -4,8 +4,6 @@
 #include "LED.h"
 #include "Ethernet.h"
 
-//ETH_HandleTypeDef heth;
-
 int main(void)
 {
 	TaskBlock tb1, tb2, tb3, tb4;
@@ -20,26 +18,26 @@ int main(void)
 	initLED3();
 	initLED4();
 
+	uint32_t frameLength = 0;
+
 	while(1)
+	{
+	//blink_LED1_yield(&tb1);
+	//blink_LED2_yield(&tb2);
+	//blink_LED3_yield(&tb3);
+	//blink_4_LEDs(&tb4);
+		//Ethernet_Init();
+		turnOnLED1();
+		if(switchControl() == GPIO_PIN_SET)
 		{
-		//blink_LED1_yield(&tb1);
-		//blink_LED2_yield(&tb2);
-		//blink_LED3_yield(&tb3);
-		//blink_4_LEDs(&tb4);
-			/*
+			frameLength = 100;
 			turnOnLED2();
-			if(switchControl() == GPIO_PIN_SET)
+			if(Ethernet_Init() == HAL_OK)
 			{
+				turnOnLED3();
+				HAL_ETH_TransmitFrame(&heth,frameLength);
 				turnOnLED4();
-				if(Ethernet_Init() == 1)
-				{
-					turnOnLED3();
-					HAL_ETH_Start(&heth);
-					turnOnLED1();
-				}
-				turnOffLED4();
-			}*/
-		//HAL_Delay(50);
-		Ethernet_Init();
+			}
 		}
+	}
 }

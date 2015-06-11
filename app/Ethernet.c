@@ -21,22 +21,17 @@
 /*Global Variable*/
 ETH_HandleTypeDef heth;
 
-void init_CLock()
-{
-	__HAL_RCC_ETHMAC_CLK_ENABLE();
-	__HAL_RCC_ETHMACTX_CLK_ENABLE();
-	__HAL_RCC_ETHMACRX_CLK_ENABLE();
-
-	//__SYSCFG_CLK_ENABLE();
-	//__ETH_CLK_ENABLE();
-}
-
 void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 {
 	GPIO_InitTypeDef GpioInfo;
 	if (heth->Instance == ETH) {
+		__SYSCFG_CLK_ENABLE();
 		__ETH_CLK_ENABLE();
 		__HAL_RCC_ETH_CLK_ENABLE();
+
+		__HAL_RCC_ETHMAC_CLK_ENABLE();
+		__HAL_RCC_ETHMACTX_CLK_ENABLE();
+		__HAL_RCC_ETHMACRX_CLK_ENABLE();
 
 		__GPIOA_CLK_ENABLE();
 		__GPIOB_CLK_ENABLE();
@@ -68,7 +63,7 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		GpioInfo.Mode		= GPIO_MODE_OUTPUT_PP;
 		GpioInfo.Pin 		= GPIO_PIN_2;
 		GpioInfo.Pull		= GPIO_PULLUP;
-		GpioInfo.Speed		= GPIO_SPEED_FAST;
+		GpioInfo.Speed		= GPIO_SPEED_MEDIUM;
 		HAL_GPIO_Init(GPIOE, &GpioInfo);
 
 		int i;
@@ -76,6 +71,9 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		for (i = 0; i < 20000; i++);
 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_SET);
 		for (i = 0; i < 20000; i++);
+
+		HAL_NVIC_SetPriority(ETH_IRQn, 12, 0);
+		HAL_NVIC_EnableIRQ(ETH_IRQn);
 	}
 }
 
@@ -97,7 +95,6 @@ void ETH_IRQHandler(void)
 
 uint32_t Ethernet_Init()
 {
-	uint32_t frameLength = 0;
 	ETH_DMADescTypeDef  DMARxDscrTab[ETH_RXBUFNB], DMATxDscrTab[ETH_TXBUFNB]; 	//Rx & Tx DMA Descriptors
 	uint8_t Rx_Buff[ETH_RXBUFNB][ETH_RX_BUF_SIZE]; 								// Receive buffers
 	uint8_t Tx_Buff[ETH_TXBUFNB][ETH_TX_BUF_SIZE]; 								// Transmit buffers
@@ -118,22 +115,20 @@ uint32_t Ethernet_Init()
 	turnOnLED3();
 	turnOnLED4();
 	*/
-
-	if(HAL_ETH_Init(&heth) == HAL_OK)
+	//turnOnLED1();
+	if(HAL_ETH_Init(&heth) == !HAL_OK)
 	{
-		turnOnLED1();
+		HAL_ETH_DeInit(&heth);
 	}
-	turnOnLED2();
+	//turnOnLED2();
 	HAL_ETH_DMATxDescListInit(&heth, DMATxDscrTab, &Tx_Buff[0][0], ETH_TXBUFNB);
 	HAL_ETH_DMARxDescListInit(&heth, DMARxDscrTab, &Rx_Buff[0][0], ETH_RXBUFNB);
-	//turnOnLED2();
+	//turnOnLED3();
 
 	HAL_ETH_Start(&heth);
 
-	//turnOnLED1();
-	frameLength = 100;
-	HAL_ETH_TransmitFrame(&heth,frameLength);
-
-	//turnOnLED4();
+	turnOnLED1();
+	HAL_ETH_TransmitFrame(&heth,100);
+	turnOnLED4();
 	return HAL_OK;
 }
