@@ -36,7 +36,7 @@ int main(void)
 			{
 				//turnOnLED3();
 				//HAL_ETH_TransmitFrame(&heth,frameLength);
-				//turnOnLED4();
+				turnOnLED4();
 			}
 		}
 	}

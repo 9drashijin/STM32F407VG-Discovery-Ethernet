@@ -70,12 +70,15 @@
   <Components path="./"/>
   <LocalComponents/>
   <Files>
+    <File name="Hardware/stm32f4xx_hal_dcmi.c" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dcmi.c" type="1"/>
     <File name="LED.c" path="app/LED.c" type="1"/>
     <File name="Hardware" path="" type="2"/>
     <File name="Ethernet.h" path="app/Ethernet.h" type="1"/>
+    <File name="Hardware/stm32f4xx_hal_rcc_ex.c" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" type="1"/>
     <File name="Hardware/stm32f4xx_hal.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h" type="1"/>
     <File name="system_stm32f4xx.h" path="app/system_stm32f4xx.h" type="1"/>
     <File name="Hardware/stm32f4xx_hal_eth.c" path="app/stm32f4xx_hal_eth.c" type="1"/>
+    <File name="Hardware/stm32f4xx_hal_gpio_ex.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h" type="1"/>
     <File name="Hardware/stm32f4xx_hal_cortex.c" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" type="1"/>
     <File name="system_stm32f4xx.c" path="app/system_stm32f4xx.c" type="1"/>
     <File name="Hardware/stm32f4xx_hal_rcc.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h" type="1"/>
@@ -83,14 +86,15 @@
     <File name="stm32f4xx_hal_conf.h" path="app/stm32f4xx_hal_conf.h" type="1"/>
     <File name="Hardware/stm32f4xx_hal_gpio.c" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" type="1"/>
     <File name="Core/core_cm4.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/CMSIS/Include/core_cm4.h" type="1"/>
+    <File name="Hardware/stm32f4xx_hal_rcc_ex.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h" type="1"/>
     <File name="Hardware/stm32f4xx_hal_def.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h" type="1"/>
     <File name="Hardware/stm32f4xx_hal_cortex.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h" type="1"/>
     <File name="Hardware/stm32f4xx_hal_gpio.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h" type="1"/>
     <File name="Hardware/stm32f4xx_hal_rcc.c" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" type="1"/>
     <File name="stm32f407xx.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h" type="1"/>
     <File name="stm32f4xx.h" path="app/stm32f4xx.h" type="1"/>
-    <File name="Core" path="" type="2"/>
     <File name="startup_stm32f407xx.s" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f407xx.s" type="1"/>
+    <File name="Core" path="" type="2"/>
     <File name="Hardware/stm32f4xx_hal_eth.h" path="../../STM32Cube_FW_F4_V1.5.0/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h" type="1"/>
     <File name="main.c" path="app/main.c" type="1"/>
     <File name="LED.h" path="app/LED.h" type="1"/>

@@ -26,18 +26,15 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 {
 	GPIO_InitTypeDef GpioInfo;
 	if (heth->Instance == ETH) {
-		__SYSCFG_CLK_ENABLE();
-		__ETH_CLK_ENABLE();
-		__HAL_RCC_ETH_CLK_ENABLE();
 
-		__HAL_RCC_ETHMAC_CLK_ENABLE();
-		__HAL_RCC_ETHMACTX_CLK_ENABLE();
-		__HAL_RCC_ETHMACRX_CLK_ENABLE();
+		//__ETH_CLK_ENABLE();
+		//__SYSCFG_CLK_ENABLE();
 
 		__GPIOA_CLK_ENABLE();
 		__GPIOB_CLK_ENABLE();
 		__GPIOC_CLK_ENABLE();
 
+		// Configure PA1, PA2 and PA7 (ETH_RMII_REF_CLK, ETH_MDIO, ETH_RMII_CRS_DV
 		GpioInfo.Alternate	= GPIO_AF11_ETH;
 		GpioInfo.Mode		= GPIO_MODE_AF_PP;
 		GpioInfo.Pin 		= GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_7;
@@ -45,6 +42,7 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		GpioInfo.Speed		= GPIO_SPEED_HIGH;
 		HAL_GPIO_Init(GPIOA, &GpioInfo);
 
+		// Configure PB11 (ETH_RMII_TX_EN), PB12 (ETH_RMII_TXD0), PB13 (ETH_RMII_TXD1)
 		GpioInfo.Alternate	= GPIO_AF11_ETH;
 		GpioInfo.Mode		= GPIO_MODE_AF_PP;
 		GpioInfo.Pin 		= GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13;
@@ -52,6 +50,7 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		GpioInfo.Speed		= GPIO_SPEED_HIGH;
 		HAL_GPIO_Init(GPIOB, &GpioInfo);
 
+		// Configure PC1, PC4 and PC5 (ETH_MDC, ETH_RMII_RXD0, ETH_RMII_RXD1)
 		GpioInfo.Alternate	= GPIO_AF11_ETH;
 		GpioInfo.Mode		= GPIO_MODE_AF_PP;
 		GpioInfo.Pin 		= GPIO_PIN_1 | GPIO_PIN_4 | GPIO_PIN_5;
@@ -59,8 +58,8 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		GpioInfo.Speed		= GPIO_SPEED_HIGH;
 		HAL_GPIO_Init(GPIOC, &GpioInfo);
 
+		/*
 		//PE2 Reset pin: Optional
-
 		GpioInfo.Mode		= GPIO_MODE_OUTPUT_PP;
 		GpioInfo.Pin 		= GPIO_PIN_2;
 		GpioInfo.Pull		= GPIO_PULLUP;
@@ -72,9 +71,17 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		for (i = 0; i < 20000; i++);
 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_SET);
 		for (i = 0; i < 20000; i++);
+		*/
 
 		HAL_NVIC_SetPriority(ETH_IRQn, 12, 0);
 		HAL_NVIC_EnableIRQ(ETH_IRQn);
+
+		__HAL_RCC_ETH_CLK_ENABLE();
+		__HAL_RCC_SYSCFG_CLK_ENABLE();
+
+		__HAL_RCC_ETHMAC_CLK_ENABLE();
+		__HAL_RCC_ETHMACTX_CLK_ENABLE();
+		__HAL_RCC_ETHMACRX_CLK_ENABLE();
 	}
 }
 
@@ -144,7 +151,7 @@ uint32_t Ethernet_Init()
 
 	if(HAL_ETH_TransmitFrame(&heth, frameLength) == HAL_OK) turnOnLED3();
 
-	if(HAL_ETH_GetReceivedFrame(&heth) == HAL_OK) turnOnLED4();
+	//if(HAL_ETH_GetReceivedFrame(&heth) == HAL_OK) turnOnLED4();
 
 	return HAL_OK;
 }
