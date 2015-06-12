@@ -18,7 +18,7 @@ int main(void)
 	initLED3();
 	initLED4();
 
-	uint32_t frameLength = 0;
+	//uint32_t frameLength = 0;
 
 	while(1)
 	{
@@ -30,13 +30,13 @@ int main(void)
 		turnOnLED1();
 		if(switchControl() == GPIO_PIN_SET)
 		{
-			frameLength = 100;
+			//frameLength = 100;
 			turnOnLED2();
 			if(Ethernet_Init() == HAL_OK)
 			{
-				turnOnLED3();
-				HAL_ETH_TransmitFrame(&heth,frameLength);
-				turnOnLED4();
+				//turnOnLED3();
+				//HAL_ETH_TransmitFrame(&heth,frameLength);
+				//turnOnLED4();
 			}
 		}
 	}

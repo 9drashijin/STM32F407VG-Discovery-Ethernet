@@ -4,6 +4,7 @@
 #include "stm32f4xx_hal_rcc.h"
 #include "Ethernet.h"
 #include "LED.h"
+#include <string.h>
 
 /* Ethernet Pins Configuration
  * ===========================
@@ -95,6 +96,7 @@ void ETH_IRQHandler(void)
 
 uint32_t Ethernet_Init()
 {
+	uint32_t frameLength = 0;
 	ETH_DMADescTypeDef  DMARxDscrTab[ETH_RXBUFNB], DMATxDscrTab[ETH_TXBUFNB]; 	//Rx & Tx DMA Descriptors
 	uint8_t Rx_Buff[ETH_RXBUFNB][ETH_RX_BUF_SIZE]; 								// Receive buffers
 	uint8_t Tx_Buff[ETH_TXBUFNB][ETH_TX_BUF_SIZE]; 								// Transmit buffers
@@ -127,8 +129,22 @@ uint32_t Ethernet_Init()
 
 	HAL_ETH_Start(&heth);
 
-	turnOnLED1();
-	HAL_ETH_TransmitFrame(&heth,100);
-	turnOnLED4();
+	//turnOnLED1();
+
+	uint8_t *buffer = (uint8_t *)(heth.TxDesc->Buffer1Addr);
+
+	uint32_t testArray[4] = {1,0,1,0};
+	uint8_t *a = (uint8_t*)(&testArray);
+	memcpy(buffer, a, 4*4);
+
+	//memcpy(buffer,"A", 1);
+
+	frameLength = 4*4;
+	//HAL_ETH_TransmitFrame(&heth,frameLength);
+
+	if(HAL_ETH_TransmitFrame(&heth, frameLength) == HAL_OK) turnOnLED3();
+
+	if(HAL_ETH_GetReceivedFrame(&heth) == HAL_OK) turnOnLED4();
+
 	return HAL_OK;
 }
