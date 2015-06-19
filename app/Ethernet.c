@@ -63,7 +63,7 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		GpioInfo.Speed		= GPIO_SPEED_HIGH;
 		HAL_GPIO_Init(GPIOC, &GpioInfo);
 
-		/*
+
 		//PE2 Reset pin: Optional
 		GpioInfo.Mode		= GPIO_MODE_OUTPUT_PP;
 		GpioInfo.Pin 		= GPIO_PIN_2;
@@ -76,17 +76,17 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 		for (i = 0; i < 20000; i++);
 		HAL_GPIO_WritePin(GPIOE, GPIO_PIN_2, GPIO_PIN_SET);
 		for (i = 0; i < 20000; i++);
-		*/
 
-		//HAL_NVIC_SetPriority(ETH_IRQn, 12, 0);
-		//HAL_NVIC_EnableIRQ(ETH_IRQn);
 
-		//__HAL_RCC_ETH_CLK_ENABLE();
-		//__HAL_RCC_SYSCFG_CLK_ENABLE();
+		HAL_NVIC_SetPriority(ETH_IRQn, 12, 0);
+		HAL_NVIC_EnableIRQ(ETH_IRQn);
 
-		//__HAL_RCC_ETHMAC_CLK_ENABLE();
-		//__HAL_RCC_ETHMACTX_CLK_ENABLE();
-		//__HAL_RCC_ETHMACRX_CLK_ENABLE();
+		__HAL_RCC_ETH_CLK_ENABLE();
+		__HAL_RCC_SYSCFG_CLK_ENABLE();
+
+		__HAL_RCC_ETHMAC_CLK_ENABLE();
+		__HAL_RCC_ETHMACTX_CLK_ENABLE();
+		__HAL_RCC_ETHMACRX_CLK_ENABLE();
 	}
 }
 
@@ -119,12 +119,12 @@ void Ethernet_Init()
 
 	heth.Instance = ETH;
 	heth.Init.AutoNegotiation = ETH_AUTONEGOTIATION_ENABLE;     // ETH_AUTONEGOTIATION_DISABLE
-	heth.Init.Speed = ETH_SPEED_100M;							// ETH_SPEED_10M
+	heth.Init.Speed = ETH_SPEED_100M;							// ETH_SPEED_100M
 	heth.Init.DuplexMode = ETH_MODE_FULLDUPLEX; 				// ETH_MODE_HALFDUPLEX
-	heth.Init.PhyAddress = DP83848_PHY_ADDRESS; 				// This parameter must be a number between Min_Data = 0 and Max_Data = 32
+	heth.Init.PhyAddress = DP83848_PHY_ADDRESS; 				// This parameter must be a number between Min_Data = 0 and Max_Data = 32 DP83848_PHY_ADDRESS
 	heth.Init.MACAddr = &MacAddress[0]; 						// MAC Address of used Hardware: must be pointer on an array of 6 bytes
 	heth.Init.RxMode = ETH_RXPOLLING_MODE; 						// ETH_RXINTERRUPT_MODE
-	heth.Init.ChecksumMode = ETH_CHECKSUM_BY_SOFTWARE; 			// ETH_CHECKSUM_BY_HARDWARE
+	heth.Init.ChecksumMode = ETH_CHECKSUM_BY_SOFTWARE; 			// ETH_CHECKSUM_BY_HARDWARE ETH_CHECKSUM_BY_SOFTWARE
 	heth.Init.MediaInterface = ETH_MEDIA_INTERFACE_RMII;		// ETH_MEDIA_INTERFACE_RMII
 }
 

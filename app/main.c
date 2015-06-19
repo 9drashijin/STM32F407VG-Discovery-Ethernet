@@ -36,24 +36,32 @@ int main(void)
 
 	SystemClock_Config();
 	GPIO_Init();
-
-	while(1)
-	{
-		//blink_LED1_yield(&tb1);
-		//blink_LED2_yield(&tb2);
-		//blink_LED3_yield(&tb3);
-		turnOnLED1();
-		if(switchControl() == GPIO_PIN_SET)
-		{
-			turnOnLED2();
-			Ethernet_Init();
-			HAL_ETH_Ready();
-			HAL_ETH_Send();
-			//HAL_ETH_Receive();
-			turnOnLED4();
-		}
-	}
+	Ethernet_Init();
+	turnOnLED1();
+	HAL_ETH_Ready();
+	turnOnLED2();
+	HAL_ETH_Send();
+	turnOnLED3();
+	HAL_ETH_Receive();
+	turnOnLED4();
+	// while(1)
+	// {
+		// blink_LED1_yield(&tb1);
+		// blink_LED2_yield(&tb2);
+		// blink_LED3_yield(&tb3);
+		// turnOnLED1();
+		// if(switchControl() == GPIO_PIN_SET)
+		// {
+			// turnOnLED2();
+			// Ethernet_Init();
+			// HAL_ETH_Ready();
+			// HAL_ETH_Send();
+			// HAL_ETH_Receive();
+			// turnOnLED4();
+		// }
+	// }
 }
+
 void SystemClock_Config(void)
 {
 
